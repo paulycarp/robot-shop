@@ -1,0 +1,29 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: robot-shop-slo-alerts
+  namespace: monitoring
+  labels:
+    role: alert-rules
+    app.kubernetes.io/name: kube-prometheus-stack
+    release: prometheus
+spec:
+  groups:
+    - name: robot-shop-slo
+      rules:
+        # SLO Availability Alert
+        - alert: RobotShopServiceDegraded
+          expr: |
+            (
+              sum(rate(container_cpu_usage_seconds_total{namespace="robot-shop", container=~"web|catalogue|cart|payment"}[2m])) == 0
+            ) or (
+              sum by (pod) (rate(container_network_receive_packets_dropped_total{namespace="robot-shop"}[2m])) > 5
+            )
+          for: 1m
+          labels:
+            severity: critical
+            team: devops
+          annotations:
+            summary: "Robot Shop Service SLO Breach: Availability degraded below 99%"
+            description: "The service in pod {{ $labels.pod }} is failing availability SLO. Error budget is depleting rapidly."
+            runbook_url: "https://github.com/paulycarp/robot-shop/blob/main/docs/runbook.md"

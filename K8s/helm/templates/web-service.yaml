@@ -9,13 +9,16 @@ spec:
   - name: http
     port: 8080
     targetPort: 8080
+    {{- if .Values.nodeport }}
+    nodePort: 31000
+    {{- end }}
   selector:
     service: web
-  {{ if .Values.nodeport }}
+  {{- if .Values.nodeport }}
   type: NodePort
-  {{ else }}
+  {{- else }}
   type: LoadBalancer
-  {{ end }}
+  {{- end }}
 ---
 {{if .Values.ocCreateRoute}}
 apiVersion: route.openshift.io/v1
