@@ -7,6 +7,14 @@ grafana:
     type: NodePort
     nodePort: 30000
   defaultDashboardsEnabled: true
+  livenessProbe:
+    initialDelaySeconds: 300
+    failureThreshold: 30
+    periodSeconds: 10
+  readinessProbe:
+    initialDelaySeconds: 60
+    failureThreshold: 30
+    periodSeconds: 10
 
 prometheus:
   service:
