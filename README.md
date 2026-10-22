@@ -2,6 +2,16 @@
 **Beginner Edition: Keep It Running**  
 *Presented by Toluwalase Adedotun | Maintained by paulycarp*
 
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Microservices-326CE5)
+![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-E6522C)
+![Grafana](https://img.shields.io/badge/Dashboards-Grafana%20Golden%20Signals-F46800)
+![Logging](https://img.shields.io/badge/Logging-Fluent%20Bit%20%2B%20Loki-brightgreen)
+![Tracing](https://img.shields.io/badge/Tracing-Jaeger%20%2B%20OpenTelemetry-blue)
+![SRE](https://img.shields.io/badge/SRE-SLO%20%26%20Runbooks-9cf)
+
+> 📄 **Official Submission Report:** [Download Capstone Final Report (PDF)](./DevOps_Capstone_Submission_Report.pdf)  
+> 🔗 **Companion Repository (Capstone 1 - Ship It):** [paulycarp/example-voting-app](https://github.com/paulycarp/example-voting-app)
+
 ---
 
 ## 📌 Project Overview
